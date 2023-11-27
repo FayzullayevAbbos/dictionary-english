@@ -60,6 +60,7 @@ async function api(j) {
 function erro(err) {
   const newError = `
   <div class="container error">
+    <img class="emo" src="images/emo.svg" alt="emogi" />
     <h2>${err.title}</h2>
     <p>${err.message}</p>
   </div>
