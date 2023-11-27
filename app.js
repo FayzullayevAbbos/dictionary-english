@@ -1,3 +1,4 @@
+const div = document.querySelector(".con");
 const inpEl = document.querySelector("input");
 const formEl = document.querySelector("form");
 const btnEl = document.querySelector("button");
@@ -6,15 +7,15 @@ const font2 = document.querySelector(".select-list .li2");
 const font3 = document.querySelector(".select-list .li3");
 const maniFont = document.querySelector(".main-font");
 const mode = document.querySelector(".pod");
-let count = 1
+let count = 1;
 const modeLink = document.querySelector(".modeLink");
 mode.addEventListener("click", () => {
   if (count % 2 == 0) {
-    count = 1
+    count = 1;
     modeLink.removeAttribute("href");
     modeLink.setAttribute("href", "main.css");
-  } else if(modeLink.hasAttribute("href", "dark.css")) {
-    count = 2
+  } else if (modeLink.hasAttribute("href", "dark.css")) {
+    count = 2;
     modeLink.removeAttribute("href");
     modeLink.setAttribute("href", "dark.css");
   }
@@ -47,11 +48,25 @@ async function api(j) {
     `https://api.dictionaryapi.dev/api/v2/entries/en/${j}`
   );
   const data = await res.json();
-
-  renHTML(data);
+  console.log(data);
+  if (data.resolution) {
+   erro(data)
+  } else {
+    renHTML(data);
+  }
+  console.log(data);
 }
 
-const div = document.querySelector(".con");
+function erro(err) {
+  const newError = `
+  <div class="container error">
+    <h2>${err.title}</h2>
+    <p>${err.message}</p>
+  </div>
+  `;
+  div.innerHTML = newError
+}
+
 function renHTML(d) {
   const newHTML = `
     <div class="container main-word">

@@ -206,6 +206,13 @@ footer p {
   font-weight: 400;
   color: #757575;
 }
+.error{
+  margin-top: 100px !important;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 @media screen and (max-width:700px) {
     .container{
